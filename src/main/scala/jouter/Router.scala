@@ -37,7 +37,7 @@ case class Route[A](routes: (String, Router)*) extends Router {
 
   def dispatch(commands: Array[String])(implicit args: A): Try[Unit] = {
     if(commands.isEmpty){
-      Failure(new NoteFound(f"expect a command path but get empty array"))
+      Failure(new NotFound(f"expect a command path but get empty array"))
     } else {
       val key = commands.head
       val rest = commands.tail
